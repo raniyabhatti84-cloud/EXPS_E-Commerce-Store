@@ -4,11 +4,12 @@ const Product = require("../models/Product");
 // Add Product to Cart
 const addToCart = async (req, res) => {
   try {
-    const { userId, productId, quantity } = req.body;
+    const { productId, quantity } = req.body;
+const userId = req.user;
 
-    if (!userId || !productId) {
+    if (!productId) {
       return res.status(400).json({
-        message: "User ID and Product ID are required",
+        message: "Product ID is required",
       });
     }
 
@@ -68,7 +69,7 @@ const addToCart = async (req, res) => {
 // Get User Cart
 const getCart = async (req, res) => {
   try {
-    const { userId } = req.params;
+    const userId = req.user;
 
     const cart = await Cart.findOne({ user: userId }).populate(
       "items.product"
@@ -91,10 +92,12 @@ const getCart = async (req, res) => {
   }
 };
 
+
 // Update Cart Item Quantity
 const updateCartItem = async (req, res) => {
   try {
-    const { userId, productId } = req.params;
+    const userId = req.user;
+    const { productId } = req.params;
     const { quantity } = req.body;
 
     if (!quantity || quantity < 1) {
@@ -125,9 +128,9 @@ const updateCartItem = async (req, res) => {
 
     await cart.save();
 
-    const updatedCart = await Cart.findOne({ user: userId }).populate(
-      "items.product"
-    );
+    const updatedCart = await Cart.findOne({
+      user: userId,
+    }).populate("items.product");
 
     res.status(200).json({
       message: "Cart updated successfully",
@@ -144,7 +147,8 @@ const updateCartItem = async (req, res) => {
 // Remove Product from Cart
 const removeFromCart = async (req, res) => {
   try {
-    const { userId, productId } = req.params;
+    const { productId } = req.params;
+const userId = req.user;
 
     const cart = await Cart.findOne({ user: userId });
 
@@ -179,7 +183,7 @@ const removeFromCart = async (req, res) => {
 // Clear Cart
 const clearCart = async (req, res) => {
   try {
-    const { userId } = req.params;
+    const userId = req.user;
 
     const cart = await Cart.findOne({ user: userId });
 
