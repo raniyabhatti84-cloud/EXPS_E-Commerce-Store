@@ -53,13 +53,16 @@ function displayProducts(products) {
                 Rs. ${product.price}
             </p>
 
-            <button>
-                View Details
-            </button>
+            <button onclick="viewProduct('${product._id}')">
+    View Details
+</button>
 
         </div>
 
     `).join("");
+}
+function viewProduct(productId) {
+    window.location.href = `product.html?id=${productId}`;
 }
 
 
