@@ -1,3 +1,4 @@
+console.log("AUTH JS STARTED");
 const API_URL = "http://localhost:5000/api/auth";
 
 
@@ -130,3 +131,54 @@ if (loginForm) {
         }
     });
 }
+// =========================
+// Navigation
+// =========================
+
+function updateNavigation() {
+
+    const authLinks = document.getElementById("auth-links");
+
+    if (!authLinks) {
+        return;
+    }
+
+    const token = localStorage.getItem("token");
+
+    if (token) {
+
+        authLinks.innerHTML = `
+            <button
+                type="button"
+                class="logout-btn"
+                onclick="logout()"
+            >
+                Logout
+            </button>
+        `;
+
+    } else {
+
+        authLinks.innerHTML = `
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+        `;
+    }
+}
+
+
+// =========================
+// Logout
+// =========================
+
+function logout() {
+
+    localStorage.removeItem("token");
+
+    window.location.href = "login.html";
+}
+
+
+// Run navigation
+updateNavigation();
+console.log("AUTH JS FINISHED");

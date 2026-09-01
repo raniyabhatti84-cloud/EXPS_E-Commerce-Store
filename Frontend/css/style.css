@@ -1391,3 +1391,31 @@ background: #e67e22;
   
 
 }
+/* =========================
+   Navigation Auth
+========================= */
+
+.logo a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#auth-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.logout-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+}
+
+.logout-btn:hover {
+    color: #e67e22;
+}
