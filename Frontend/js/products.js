@@ -8,22 +8,28 @@ const productsContainer = document.getElementById("products-container");
 
 async function getProducts() {
     try {
+
         const response = await fetch(PRODUCTS_API_URL);
 
         const data = await response.json();
 
+        console.log("Products Response:", data);
+
         if (!response.ok) {
-            throw new Error(data.message || "Failed to fetch products");
+            throw new Error(
+                data.message || "Failed to fetch products"
+            );
         }
 
         displayProducts(data.products);
 
     } catch (error) {
-        console.error("Error:", error);
+
+        console.error("Products Error:", error);
 
         if (productsContainer) {
             productsContainer.innerHTML = `
-                <p>Failed to load products.</p>
+                <p>Failed to load products: ${error.message}</p>
             `;
         }
     }
@@ -80,8 +86,10 @@ function displayProducts(products) {
 
 function viewProduct(productId) {
 
-    window.location.href = `product.html?id=${productId}`;
+    console.log("Selected Product ID:", productId);
 
+    window.location.href =
+        `product.html?id=${productId}`;
 }
 
 

@@ -1,60 +1,110 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>E-Commerce Store</title>
+    <title>My E-Commerce Store</title>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-   <header class="header">
+    <!-- Header -->
+    <header class="header">
 
-    <div class="logo">
-        <a href="index.html">My E-Commerce</a>
-    </div>
+        <div class="logo">
+            <a href="index.html">My E-Commerce</a>
+        </div>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html#products">Products</a>
-        <a href="cart.html">Cart 🛒</a>
-        <a href="orders.html">My Orders</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#products">Products</a>
+            <a href="cart.html">Cart 🛒</a>
+            <a href="orders.html">My Orders</a>
 
-        <span id="auth-links"></span>
-    </nav>
+            <span id="auth-links"></span>
+        </nav>
 
-</header>
+    </header>
 
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Welcome to My E-Commerce Store</h1>
 
-        <p>
-            Find the best products at affordable prices.
-        </p>
+        <div class="hero-content">
 
-        <button>Shop Now</button>
-    </section>
+            <p class="hero-small-title">
+                WELCOME TO OUR STORE
+            </p>
 
+            <h1>
+                Shop smarter.<br>
+                Live better.
+            </h1>
 
-    <!-- Products -->
-    <section class="products-section">
+            <p class="hero-description">
+                Discover quality products at affordable prices
+                and enjoy a simple shopping experience.
+            </p>
 
-        <h2>Our Products</h2>
+            <a href="#products" class="hero-button">
+                Shop Now
+            </a>
 
-        <div id="products-container" class="products-container">
-            <!-- Products will be loaded here -->
         </div>
 
     </section>
+
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+
+        <div class="section-heading">
+
+            <p class="section-small-title">
+                OUR COLLECTION
+            </p>
+
+            <h2>Featured Products</h2>
+
+            <p>
+                Explore our latest products and find something
+                perfect for you.
+            </p>
+
+        </div>
+
+
+        <div
+            id="products-container"
+            class="products-container"
+        >
+            <p class="loading-products">
+                Loading products...
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <p>
+            © 2026 My E-Commerce. All rights reserved.
+        </p>
+
+    </footer>
 
 
     <script src="js/products.js"></script>
     <script src="js/auth.js"></script>
 
 </body>
+
 </html>
+  
